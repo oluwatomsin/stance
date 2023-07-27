@@ -7,7 +7,7 @@ import json
 
 
 # Loading the model and caching it to prevent reload
-@st.cache(allow_output_mutation=True)
+# @st.cache(allow_output_mutation=True)
 def load_model():
     """
     Load the models into memory
