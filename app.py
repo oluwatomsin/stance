@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_lottie import st_lottie
-from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification#, RobertaTokenizerFast, TFRobertaForSequenceClassification
+from transformers import pipeline, AutoTokenizer, TFAutoModelForSequenceClassification#, RobertaTokenizerFast, TFRobertaForSequenceClassification
 import json
 
 
