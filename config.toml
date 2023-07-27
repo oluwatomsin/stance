@@ -2,8 +2,8 @@
 
 # General Settings
 [general]
-headless = false
-enableCORS = false
+headless = true
+enableCORS = true
 
 # Customization
 [theme]
