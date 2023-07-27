@@ -1,0 +1,28 @@
+# config.toml
+
+# General Settings
+[general]
+headless = false
+enableCORS = false
+
+# Customization
+[theme]
+primaryColor="#4e73e6"
+backgroundColor="#0b0c0b"
+secondaryBackgroundColor="#091c46"
+textColor="#abb4e0"
+font="serif"
+
+# Caching
+[cache]
+enabled = true
+ttl = 3600
+
+# Server Configuration
+[server]
+port = 8501
+maxUploadSize = 500
+
+# Custom Settings
+[custom]
+key = "value"

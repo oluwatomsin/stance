@@ -1,0 +1,5 @@
+tensorflow
+streamlit
+transformers
+torch
+streamlit-lottie

@@ -1,0 +1,2 @@
+
+practice_sentence = "Hi.  I have seen images attached here (attachment rremoved to protect patient identity). It does not signify towards any health issue. It seems to be normal flexor creases. Finasteride drug that you were taking can lead to hand swelling, headache, weakness, nausea, etc., as side effects. If you want to investigate than check your random blood sugar, serum cholesterol, serum LDL, serum Triglycerides, sgot, sgpt, blood urea and creatinine for routine check up. If any specific complaint present then let me know about that. Take care."
