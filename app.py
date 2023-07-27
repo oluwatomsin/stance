@@ -19,7 +19,7 @@ def load_model():
     model_name = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
-    model.args.use_multiprocessing = False
+    model.use_multiprocessing = False
 
     # Sentiment analysis
     sentiment_analysis = pipeline("sentiment-analysis", model="siebert/sentiment-roberta-large-english")
