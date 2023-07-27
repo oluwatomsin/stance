@@ -1,7 +1,6 @@
 import streamlit as st
 from streamlit_lottie import st_lottie
 from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification#, RobertaTokenizerFast, TFRobertaForSequenceClassification
-import torch
 import json
 
 
@@ -29,31 +28,30 @@ def load_model():
 
 # Creating a function that gets the sentiment and stance of a model
 def detect_bias(models, text):
-  """
-  Takes in health related text and outputs stance and sentiment
-  Input:
-      text (str): text data
-      models (tuple): First model should be sentiment model, second should be stance model. This will ideally run on the output of the load model function
-  Output:
-      tuple of dictionaries: Returns a tuple where the first entry contains the sentiment dictionary of sentiment strength pairs and the second contains a dictionary of stance dictionary pairs.
-  """
-  device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+    """
+    Takes in health related text and outputs stance and sentiment
+    Input:
+        text (str): text data
+        models (tuple): First model should be sentiment model, second should be stance model. This will ideally run on the output of the load model function
+    Output:
+        tuple of dictionaries: Returns a tuple where the first entry contains the sentiment dictionary of sentiment strength pairs and the second contains a dictionary of stance dictionary pairs.
+    """
 
-  premise = text
-  hypothesis = "The health concerns are valid"
+    premise = text
+    hypothesis = "The health concerns are valid"
 
-  sent_model = models[0]
-  stance_model = models[1][0]
-  stance_tokenizer = models[1][1]
+    sentiment_analysis = models[0]
+    stance_model = models[1][0]
+    stance_tokenizer = models[1][1]
 
-  #Stance prediction
-  input = stance_tokenizer(premise, hypothesis, truncation=True, return_tensors="pt")
-  output = stance_model(input["input_ids"].to(device))  # device = "cuda:0" or "cpu"
-  prediction_stance = torch.softmax(output["logits"][0], -1).tolist()
-  label_names = ["entailment", "neutral", "contradiction"]
-  prediction_stance = {name: round(float(pred) * 100, 1) for pred, name in zip(prediction_stance, label_names)}
+    # Stance prediction
+    input_ids = stance_tokenizer(premise, hypothesis, truncation=True, return_tensors="pt").input_ids
+    output = stance_model(input_ids)[0]  # Logits for the first example in the batch
+    prediction_stance = output.softmax(dim=1)[0].tolist()
+    label_names = ["entailment", "neutral", "contradiction"]
+    prediction_stance = {name: round(float(pred) * 100, 1) for pred, name in zip(prediction_stance, label_names)}
 
-  return (sent_model(text)[0], prediction_stance)
+    return (sentiment_analysis(text)[0], prediction_stance)
 
 
 # loading the model into memory
