@@ -17,7 +17,7 @@ def load_model():
     # Instantiate stance detection model
     model_name = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSequenceClassification.from_pretrained(model_name)
+    model = TFAutoModelForSequenceClassification.from_pretrained(model_name)
     model.use_multiprocessing = False
 
     # Sentiment analysis
