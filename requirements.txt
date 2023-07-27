@@ -4,3 +4,4 @@ transformers
 torch
 streamlit-lottie
 torchvision
+protobuf>=3.20
