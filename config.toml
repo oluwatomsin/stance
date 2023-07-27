@@ -21,7 +21,7 @@ ttl = 3600
 # Server Configuration
 [server]
 port = 8501
-maxUploadSize = 500
+maxUploadSize = 500000
 
 # Custom Settings
 [custom]
